@@ -51,7 +51,7 @@ var person = new Person('Jack', 19);
 person.getSecret();
 ```
 
-###  JClass.extend(constructor)
+## JClass.extend(constructor)
 
 **Description**
 
