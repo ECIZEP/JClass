@@ -9,30 +9,38 @@
 </head>
 <body>
     <script>
+        // create a class
         var Person = JClass(function (name, age) {
+            // private variable
+            var secret = "you can get me by privilege method"
+            
+            // constructor
             this.name = name;
             this.age = age;
-        }, "Person").proto({
-            personFunc: function () {
-                console.log(this.name, this.age);
+
+            // privilege method
+            this.getSecret = function(){
+                return secret;
             }
-        });
+            this.setSecret = function(newValue){
+                secret = newValue;
+            }
+
+        })
 
         var person = new Person('Jack', 19);
+        person.getSecret();
 
 
         var Teacher = Person.extend((function (name, age, subject) {
             this.subject = subject;
         })).proto({
-            toStr: function () {
+            showSubject: function () {
                 console.log(this.subject);
             },
-            name: 'Teacher'
         }).static({
             num: 3
         });
-
-
 
         var teacher = new Teacher('jack', 18, 'math');
 
@@ -41,7 +49,7 @@
         });
 
 
-        console.log(teacher);
+        console.log(teacher.classNum);
 
 
         var Animal = JClass(function (name, age) {
